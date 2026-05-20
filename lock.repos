@@ -1,0 +1,9 @@
+repositories:
+  libretro-2048:
+    type: git
+    url: https://github.com/libretro/libretro-2048.git
+    version: c90437d3c3913999624deca3fb55ecfa632b72c4
+  libretro-yabause:
+    type: git
+    url: https://github.com/libretro/yabause.git
+    version: 7cb15b8f9eea5a6fa7cae34468a6989522bcba75

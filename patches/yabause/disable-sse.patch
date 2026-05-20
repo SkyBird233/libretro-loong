@@ -1,0 +1,14 @@
+diff --git a/yabause/src/libretro/Makefile b/yabause/src/libretro/Makefile
+index 56c4a6e..8532cfa 100644
+--- a/yabause/src/libretro/Makefile
++++ b/yabause/src/libretro/Makefile
+@@ -117,6 +117,9 @@ ifneq (,$(findstring unix,$(platform)))
+ 		HAVE_SSE = 0
+ 	endif
+ 
++	# loongarch64
++	HAVE_SSE = 0
++
+ else ifneq (,$(findstring linux-portable,$(platform)))
+ 	TARGET := $(TARGET_NAME)_libretro.so
+ 	fpic := -fPIC -nostdlib

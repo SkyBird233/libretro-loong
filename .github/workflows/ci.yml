@@ -1,0 +1,54 @@
+name: build
+
+on:
+  push:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          submodules: true
+      - uses: docker/setup-buildx-action@v4
+      - name: Build cross container
+        uses: docker/build-push-action@v7
+        with:
+          tags: "libretro-loongarch-cross"
+          load: true
+          cache-from: "type=gha,scope=libretro-loongarch-cross"
+          cache-to: "type=gha,mode=max,scope=libretro-loongarch-cross"
+
+      - name: Install package for crc32
+        run: sudo apt-get update && sudo apt-get install -y libarchive-zip-perl
+
+      - name: Install vcs2l
+        run: pip3 install vcs2l
+
+      - name: Restore repos
+        run: vcs import --shallow libretro-super < lock.repos
+
+      - name: Build cores
+        run: scripts/build-all-ci.sh
+
+      - name: Prepare site
+        run: scripts/prepare-site.sh
+
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          include-hidden-files: true
+
+  deploy:
+    if: github.ref == 'refs/heads/main'
+    needs: build
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
