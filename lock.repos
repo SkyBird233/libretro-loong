@@ -3,6 +3,10 @@ repositories:
     type: git
     url: https://github.com/libretro/libretro-2048.git
     version: c90437d3c3913999624deca3fb55ecfa632b72c4
+  libretro-snes9x:
+    type: git
+    url: https://github.com/libretro/snes9x.git
+    version: 185488cd83aaf274752a742c94d45561cbecb7af
   libretro-yabause:
     type: git
     url: https://github.com/libretro/yabause.git
