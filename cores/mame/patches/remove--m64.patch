@@ -20,33 +20,7 @@ index 2ea04299..50a537ef 100644
  	"(links) do\ntable.insert(result, '--pkg ' .. pkg)\nend\nreturn result\nend\nfunction premake.valac.getdefines(defines)\nlocal result = { }\nfor _, def in ipairs(defines) do\ntable.insert(result, '-D ' .. def)\nend\nreturn result\nend\nfunction premake.valac.getvapidirs(vapidirs)\nlocal result = { }\nfor _, def in ipairs(vapidirs) do\ntable.insert(result, '--vapidir=' .. def)\nend\nreturn result\nend\n",
  
  	/* tools/swift.lua */
-diff --git a/Makefile.libretro b/Makefile.libretro
-index 142ea956..332e826c 100644
---- a/Makefile.libretro
-+++ b/Makefile.libretro
-@@ -51,6 +51,9 @@ ifneq ($(ARCH),)
- 	ifeq ($(ARCH),x86)
- 		PTR64 := 0
- 	endif
-+	ifeq ($(ARCH),loongarch64)
-+		CFLAGS += -mcmodel=medium
-+	endif
- 	ARCH :=
- $(info unsetting ARCH=$(LIBRETRO_CPU))
- endif
-diff --git a/scripts/genie.lua b/scripts/genie.lua
-index bd53d221..81e92288 100644
---- a/scripts/genie.lua
-+++ b/scripts/genie.lua
-@@ -1010,7 +1010,7 @@ end
- -- On Linux targets link libgcc and libstdc++ statically.  See #137
- if _OPTIONS["targetos"]=="linux" then
- 		linkoptions {
--			"-static-libgcc -static-libstdc++"
-+			-- "-static-libgcc -static-libstdc++"
- 		}
- end
- 
+
 diff --git a/scripts/toolchain.lua b/scripts/toolchain.lua
 index 9262abf6..328e916e 100644
 --- a/scripts/toolchain.lua

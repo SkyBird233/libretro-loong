@@ -1,0 +1,13 @@
+diff --git a/scripts/genie.lua b/scripts/genie.lua
+index bd53d221..81e92288 100644
+--- a/scripts/genie.lua
++++ b/scripts/genie.lua
+@@ -1010,7 +1010,7 @@ end
+ -- On Linux targets link libgcc and libstdc++ statically.  See #137
+ if _OPTIONS["targetos"]=="linux" then
+ 		linkoptions {
+-			"-static-libgcc -static-libstdc++"
++			-- "-static-libgcc -static-libstdc++"
+ 		}
+ end
+

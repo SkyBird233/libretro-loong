@@ -3,6 +3,10 @@ repositories:
     type: git
     url: https://github.com/libretro/libretro-2048.git
     version: c90437d3c3913999624deca3fb55ecfa632b72c4
+  libretro-mame:
+    type: git
+    url: https://github.com/libretro/mame.git
+    version: 98e165ffee6eb5344be2d81a6a216c163a675b8d
   libretro-snes9x:
     type: git
     url: https://github.com/libretro/snes9x.git
