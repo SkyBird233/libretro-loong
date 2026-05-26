@@ -1,11 +1,12 @@
 # syntax=docker.io/docker/dockerfile:1
 
 ARG DEBIAN_TAG=sid-20260406
+ARG SCCACHE_VERSION=v0.15.0
+
 
 FROM debian:$DEBIAN_TAG
 
 RUN dpkg --add-architecture loong64
-
 # dpkg: error processing archive /tmp/apt-dpkg-install-AN2vKz/209-libxcb1_1.17.0-2+b2_amd64.deb (--unpack):
 #   trying to overwrite shared '/usr/share/doc/libxcb1/changelog.Debian.gz', which is different from other instances of package libxcb1:amd64
 RUN apt-get update && apt-get -o Dpkg::Options::="--force-overwrite" -y install \
@@ -24,3 +25,8 @@ RUN apt-get update && apt-get -o Dpkg::Options::="--force-overwrite" -y install 
     libgles2-mesa-dev:loong64 \
     python3
 
+ARG SCCACHE_VERSION
+ADD --unpack https://github.com/mozilla/sccache/releases/download/$SCCACHE_VERSION/sccache-$SCCACHE_VERSION-x86_64-unknown-linux-musl.tar.gz /usr/local/bin/
+RUN mv /usr/local/bin/sccache-*/sccache /usr/local/bin/sccache && \
+    rm -rv /usr/local/bin/sccache-* && \
+    chmod +x /usr/local/bin/sccache

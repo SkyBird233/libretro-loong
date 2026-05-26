@@ -2,6 +2,7 @@ name: build
 
 on:
   push:
+  workflow_dispatch:
 
 jobs:
   build:
@@ -19,6 +20,9 @@ jobs:
           load: true
           cache-from: "type=gha,scope=libretro-loongarch-cross"
           cache-to: "type=gha,mode=max,scope=libretro-loongarch-cross"
+      - uses: mozilla-actions/sccache-action@v0.0.10
+        with:
+          version: "v0.15.0"
 
       - name: Install package for crc32
         run: sudo apt-get update && sudo apt-get install -y libarchive-zip-perl
@@ -31,6 +35,8 @@ jobs:
 
       - name: Build cores
         run: scripts/build-all-ci.sh
+        env:
+          SCCACHE_GHA_ENABLED: "true"
 
       - name: Prepare site
         run: scripts/prepare-site.sh
