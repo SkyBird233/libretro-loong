@@ -20,9 +20,13 @@ jobs:
           load: true
           cache-from: "type=gha,scope=libretro-loongarch-cross"
           cache-to: "type=gha,mode=max,scope=libretro-loongarch-cross"
-      - uses: mozilla-actions/sccache-action@v0.0.10
+      - name: Export environmental variables for sccache
+        uses: actions/github-script@v9
         with:
-          version: "v0.15.0"
+          script: |
+            core.exportVariable('ACTIONS_RESULTS_URL', process.env.ACTIONS_RESULTS_URL || '');
+            core.exportVariable('ACTIONS_RUNTIME_TOKEN', process.env.ACTIONS_RUNTIME_TOKEN || '');
+            core.exportVariable('ACTIONS_CACHE_SERVICE_V2', process.env.ACTIONS_CACHE_SERVICE_V2 || 'on');
 
       - name: Install package for crc32
         run: sudo apt-get update && sudo apt-get install -y libarchive-zip-perl

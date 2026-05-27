@@ -45,7 +45,9 @@ fi
 
 if [[ -f "$CORE_DIR"/prepare.sh ]]; then
   echo "=== Preparing $1 ..."
+  set -x
   source "$CORE_DIR"/prepare.sh
+  set +x
 fi
 
 if [[ -d "$CORE_DIR"/patches ]]; then
@@ -57,6 +59,11 @@ fi
 echo "=== Building $1 ..."
 cd $BASE_DIR 
 ./libretro-build.sh "$1"
+
+if [[ "$SCCACHE_GHA_ENABLED" = true ]]; then
+  echo "=== sccache stats"
+  sccache --show-stats
+fi
 
 OUTPUT="$BASE_DIR"/dist/unix/"$1"_libretro.so
 if [[ ! -f "$OUTPUT" ]]; then
