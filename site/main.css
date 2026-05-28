@@ -135,10 +135,24 @@ main ul li > div {
 .selected,
 li > a:hover {
   outline: solid;
-  outline-color: skyblue;
   outline-width: 2px;
   outline-offset: -1px;
   border-radius: 1px;
+
+  animation-duration: 0.5s;
+  animation-name: selected-flash;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: cubic-bezier(.46,.03,.52,.96);
+}
+
+@keyframes selected-flash {
+  from {
+    outline-color: #198AC6;
+  }
+  to {
+    outline-color: #89F1F2;
+  }
 }
 
 footer {
