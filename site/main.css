@@ -56,10 +56,11 @@ nav li {
 }
 
 ul li > a {
+  --li-a-padding: 0.3em;
   display: block;
   font-size: large;
-  line-height: 1em;
-  padding: 0.5em;
+  /* line-height: 1em; */
+  padding: var(--li-a-padding) 0.5rem;
 }
 
 nav .current {
@@ -78,15 +79,17 @@ main {
 main ul {
   overflow: auto;
   /* Combine with margin of "main" to control
-           the scroll bar position */
+    the scroll bar position */
   padding: 0 0.5em 1px 0.5em;
 }
-main ul li {
+main ul li > a,
+main ul li > div {
   position: relative;
   isolation: isolate;
 }
-main ul li::after,
-main ul li:first-child:before {
+main ul li:first-child > a::before,
+main ul li > a::after,
+main ul li > div::after {
   content: "";
   display: block;
   width: 100%;
@@ -96,9 +99,26 @@ main ul li:first-child:before {
   border-color: #474745;
   z-index: -1;
 }
+main ul li:first-child > a::before{
+  top: 0;
+  left: 0;
+}
+main ul li > a::after,
+main ul li > div::after {
+  bottom: 0;
+  left: 0;
+}
+
+main ul li > div {
+  font-size: small;
+  color: gray;
+  padding: 0.5em 0.5rem;
+  display: flex;
+  gap: 2em;
+}
 
 .selected,
-li:hover {
+li > a:hover {
   outline: solid;
   outline-color: skyblue;
   outline-width: 2px;
