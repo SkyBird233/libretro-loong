@@ -1,0 +1,187 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>libretro-loong</title>
+    <style>
+      body {
+        background-color: #282828;
+        color: white;
+        margin: 0;
+        box-sizing: border-box;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      a {
+        color: unset;
+        text-decoration: none;
+      }
+
+      ul {
+        margin: unset;
+        padding: unset;
+        list-style-type: none;
+      }
+
+      header {
+        border-bottom: solid;
+        border-width: 1px;
+        margin: 0 1.5em;
+        padding: 1em 0.5em;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      header .title {
+        font-size: xx-large;
+      }
+
+      .main-container {
+        flex-grow: 1;
+        display: flex;
+        overflow: hidden;
+      }
+      @media (width <= 40rem) {
+        .main-container {
+          flex-direction: column;
+        }
+      }
+
+      nav {
+        --nav-bg-color: #2e2e2e;
+        background-color: var(--nav-bg-color);
+        flex-basis: 30%;
+        padding: calc(1em - 0.3em) 2em;
+      }
+
+      nav li {
+        margin: 0.3em 0;
+      }
+
+      ul li > a {
+        display: block;
+        font-size: large;
+        line-height: 1em;
+        padding: 0.5em;
+      }
+
+      nav .current {
+        color: #00d9ae;
+        background-color:
+          linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+          var(--nav-bg-color);
+      }
+
+      main {
+        flex-basis: 70%;
+        flex-grow: 1;
+        overflow: auto;
+        margin: 1em 1.5em;
+      }
+
+      main ul {
+        overflow: auto;
+        /* Combine with margin of "main" to control
+           the scroll bar position */
+        padding: 0 0.5em 1px 0.5em;
+      }
+      main ul li {
+        position: relative;
+        isolation: isolate;
+      }
+      main ul li::after,
+      main ul li:first-child:before {
+        content: "";
+        display: block;
+        width: 100%;
+        position: absolute;
+        border-bottom: solid;
+        border-width: 1px;
+        border-color: #474745;
+        z-index: -1;
+      }
+
+      .selected,
+      li:hover {
+        outline: solid;
+        outline-color: skyblue;
+        outline-width: 2px;
+        outline-offset: -1px;
+        border-radius: 1px;
+      }
+
+      footer {
+        border-top: solid;
+        border-width: 1px;
+        margin: 0 1.5em;
+        padding: 1em 0.5em;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <span class="title">核心下载</span>
+      <span>Date</span>
+    </header>
+
+    <div class="main-container">
+      <nav>
+        <ul>
+          <li><a href="/">主页</a></li>
+          <li><a href="/download-retroarch/">模拟器下载</a></li>
+          <li><a href="/download-cores/" class="current">核心下载</a></li>
+          <li><a href="/about/">关于</a></li>
+        </ul>
+      </nav>
+      <main>
+        <ul>
+          <li>
+            <a href="/">2048_libretro.so.zip</a>
+            <!-- <div>大小：84K</div> -->
+          </li>
+          <li>
+            <a href="/">mame_libretro.so.zip</a>
+          </li>
+          <li>
+            <a href="/">snes9x_libretro.so.zip</a>
+          </li>
+          <li>
+            <a href="/">yabause_libretro.so.zip</a>
+          </li>
+          <li>
+            <a href="/">yabause_libretro.so.zip</a>
+          </li>
+          <li>
+            <a href="/">yabause_libretro.so.zip</a>
+          </li>
+          <li>
+            <a href="/">yabause_libretro.so.zip</a>
+          </li>
+          <li>
+            <a href="/">yabause_libretro.so.zip</a>
+          </li>
+          <li>
+            <a href="/">yabause_libretro.so.zip</a>
+          </li>
+          <li>
+            <a href="/">yabause_libretro.so.zip</a>
+          </li>
+          <li>
+            <a href="/">yabause_libretro.so.zip</a>
+          </li>
+          <li>
+            <a href="/">yabause_libretro.so.zip</a>
+          </li>
+        </ul>
+      </main>
+    </div>
+
+    <footer>
+      <span>Footer</span>
+    </footer>
+  </body>
+</html>
