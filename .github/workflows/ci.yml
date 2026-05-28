@@ -1,8 +1,12 @@
 name: build
 
 on:
-  push:
   workflow_dispatch:
+    inputs:
+      cores:
+        description: Cores to build
+        default: null
+        required: false
 
 jobs:
   build:
@@ -38,7 +42,7 @@ jobs:
         run: vcs import --shallow libretro-super < lock.repos
 
       - name: Build cores
-        run: scripts/build-all-ci.sh
+        run: scripts/build-ci.sh ${{ inputs.cores }}
         env:
           SCCACHE_GHA_ENABLED: "true"
 
