@@ -80,25 +80,25 @@ ul li > a > img {
 
 nav .current {
   color: #00d9ae;
-  background-color:
-    linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), var(--nav-bg-color);
 }
 nav .current img {
-  filter: brightness(0) saturate(100%) invert(67%) sepia(61%) saturate(3226%) hue-rotate(123deg) brightness(100%) contrast(101%);
+  /* Same as #00d9ae */
+  filter: brightness(0) saturate(100%) invert(67%) sepia(61%) saturate(3226%)
+    hue-rotate(123deg) brightness(100%) contrast(101%);
 }
 
 main {
   flex-basis: 70%;
   flex-grow: 1;
   overflow: auto;
-  margin: 1em 1.5em;
+  margin: 0 1.5em;
 }
 
 main ul {
   overflow: auto;
   /* Combine with margin of "main" to control
     the scroll bar position */
-  padding: 0 0.5em 1px 0.5em;
+  padding: 1em 0.5em;
 }
 main ul li > a,
 main ul li > div {
@@ -146,15 +146,15 @@ li > a:hover {
   animation-name: selected-flash;
   animation-iteration-count: infinite;
   animation-direction: alternate;
-  animation-timing-function: cubic-bezier(.46,.03,.52,.96);
+  animation-timing-function: cubic-bezier(0.46, 0.03, 0.52, 0.96);
 }
 
 @keyframes selected-flash {
   from {
-    outline-color: #198AC6;
+    outline-color: #198ac6;
   }
   to {
-    outline-color: #89F1F2;
+    outline-color: #89f1f2;
   }
 }
 
