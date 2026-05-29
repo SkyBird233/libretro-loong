@@ -35,3 +35,6 @@ for core in $(yq '.repositories | keys | map(sub("libretro-","")) | join(" ")' l
 done
 rm -v .index-extended.old
 popd
+
+python3 site/main.py
+cp -rv site/public/* "$SITE_DIR"

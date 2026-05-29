@@ -36,7 +36,7 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y libarchive-zip-perl
 
       - name: Install vcs2l
-        run: pip3 install vcs2l
+        run: pip3 install vcs2l Jinja2
 
       - name: Restore repos
         run: vcs import --shallow libretro-super < lock.repos
