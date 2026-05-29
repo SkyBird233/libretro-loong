@@ -1,8 +1,14 @@
-
 set -e
 
 ALL_CORES=$(yq '.repositories | keys | map(sub("libretro-","")) | join(" ")' lock.repos)
-CORES_TO_BUILD="${*:-$ALL_CORES}"
+
+if [ "$#" -eq 0 ]; then
+  CORES_TO_BUILD=""
+elif [ "${1,,}" = "all" ]; then
+  CORES_TO_BUILD="$ALL_CORES"
+else
+  CORES_TO_BUILD="$*"
+fi
 
 echo "Cores to build: $CORES_TO_BUILD"
 

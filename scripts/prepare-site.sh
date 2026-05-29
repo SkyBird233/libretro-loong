@@ -13,12 +13,16 @@ mkdir -vp "$CORES_TARGET_DIR"
 cp -v lock.repos "$CORES_TARGET_DIR"/
 
 echo "Preparing new cores ..."
-> $INDEX_FILE
-for f in "$CORES_DIR"/*.so; do
-  name="$(basename $f)"
-  echo "$(date -Idate) $("$CRC32" "$f") $name.zip" >> $INDEX_FILE
-  zip -j "$CORES_TARGET_DIR"/"$name.zip" "$f"
-done
+> "$INDEX_FILE"
+if ! compgen -G "$CORES_DIR"/*.so > /dev/null; then
+  echo "No new cores found in $CORES_DIR";
+else
+  for f in "$CORES_DIR"/*.so; do
+    name="$(basename "$f")"
+    echo "$(date -Idate) $("$CRC32" "$f") $name.zip" >> "$INDEX_FILE"
+    zip -j "$CORES_TARGET_DIR"/"$name.zip" "$f"
+  done
+fi
 
 echo "Downloading previous cores ..."
 CORES_LATEST_URL="https://skybird233.github.io/libretro-loong"
@@ -36,5 +40,6 @@ done
 rm -v .index-extended.old
 popd
 
+echo "Building site ..."
 python3 site/main.py
 cp -rv site/public/* "$SITE_DIR"
