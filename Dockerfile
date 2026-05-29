@@ -11,6 +11,7 @@ FROM debian:$DEBIAN_TAG
 RUN dpkg --add-architecture loong64 && \
     apt-get update && \
     apt-get -o Dpkg::Options::="--force-overwrite" -y --no-install-recommends install \
+    ca-certificates \
     git \
     build-essential \
     gcc-loongarch64-linux-gnu \
