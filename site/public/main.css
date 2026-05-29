@@ -83,6 +83,9 @@ nav .current {
   background-color:
     linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), var(--nav-bg-color);
 }
+nav .current img {
+  filter: brightness(0) saturate(100%) invert(67%) sepia(61%) saturate(3226%) hue-rotate(123deg) brightness(100%) contrast(101%);
+}
 
 main {
   flex-basis: 70%;

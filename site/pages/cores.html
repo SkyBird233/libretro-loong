@@ -1,0 +1,14 @@
+{% extends "index.html" %} {% block main %}
+<ul>
+  {% for core in cores %}
+  <li>
+    <a href="{{ core.url }}">{{ core.filename }}</a>
+    <div>
+      {% for meta in core.filemeta %}
+      <span>{{ meta }}</span>
+      {% endfor %}
+    </div>
+  </li>
+  {% endfor %}
+</ul>
+{% endblock %}

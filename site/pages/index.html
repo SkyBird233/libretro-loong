@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>libretro-loong</title>
+    <link rel="stylesheet" href="main.css" />
+  </head>
+  <body>
+    <header>
+      <div class="title">
+        <img src="images/menu_quickmenu.svg" />
+        <span>{{ pageTitle }}</span>
+      </div>
+      <span>LoongArch</span>
+    </header>
+
+    <div class="main-container">
+      <nav>
+        <ul>
+          {% for nav in navs %}
+          <li>
+            <a
+              href="{{ nav.url }}"
+              class="{% if currentNav == nav.url %}current{% endif %}"
+            >
+              <img src="{{ nav.iconUrl }}" />
+              <span>{{ nav.name }}</span>
+            </a>
+          </li>
+          {% endfor %}
+        </ul>
+      </nav>
+      <main>
+        {% block main %}
+        <h2>libretro-loong</h2>
+        <p>Unofficial libretro builds for LoongArch.</p>
+        {% endblock %}
+      </main>
+    </div>
+
+    <footer>
+      <span>{{ footerText }}</span>
+    </footer>
+  </body>
+</html>
