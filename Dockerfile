@@ -15,7 +15,7 @@ RUN dpkg --add-architecture loong64 && \
     build-essential \
     gcc-loongarch64-linux-gnu \
     g++-loongarch64-linux-gnu \
-    binutils-aarch64-linux-gnu \
+    binutils-loongarch64-linux-gnu \
     clang \
     llvm \
     lld \
