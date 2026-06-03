@@ -7,6 +7,10 @@ repositories:
     type: git
     url: https://github.com/libretro/mame.git
     version: 98e165ffee6eb5344be2d81a6a216c163a675b8d
+  libretro-mgba:
+    type: git
+    url: https://github.com/libretro/mgba.git
+    version: 6dce57eef127dc4cc292644f38196e0e7c58590c
   libretro-snes9x:
     type: git
     url: https://github.com/libretro/snes9x.git
