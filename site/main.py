@@ -30,6 +30,11 @@ pages = [
         iconUrl="images/menu_room_lan.svg",
         url="index.html",
     ),
+    Page(
+        name="快速开始",
+        iconUrl="images/menu_power.svg",
+        url="quickstart.html"
+    ),
     # Page(
     #     name="模拟器",
     #     iconUrl="images/menu_saving.svg",
@@ -57,7 +62,7 @@ def render_page(dist: Path, environment: Environment, pages: list[Page], index: 
             "pageTitle": page.name,
             "navs": pages,
             "currentNav": page.url,
-            "footerText": "Footer",
+            "footerText": "libretro-loong",
             **page.context(),
         }
     )

@@ -33,8 +33,28 @@
       </nav>
       <main>
         {% block main %}
-        <h2>libretro-loong</h2>
-        <p>Unofficial libretro builds for LoongArch.</p>
+        <div class="index">
+          <div class="banner">
+            <img src="images/menu_quickmenu.svg" />
+            <h1>libretro-loong</h1>
+          </div>
+          <ul class="links">
+            <li>
+              <a
+                href="https://www.libretro.com/index.php/home-2/"
+                target="_blank"
+              >
+                官方网站
+              </a>
+            </li>
+            <li>
+              <a href="quickstart.html">快速开始</a>
+            </li>
+            <li>
+              <a href="cores.html">核心下载</a>
+            </li>
+          </ul>
+        </div>
         {% endblock %}
       </main>
     </div>
