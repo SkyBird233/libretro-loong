@@ -11,6 +11,10 @@ repositories:
     type: git
     url: https://github.com/libretro/mame.git
     version: 98e165ffee6eb5344be2d81a6a216c163a675b8d
+  libretro-melonds:
+    type: git
+    url: https://github.com/libretro/melonDS.git
+    version: 634e51477364edc39aaccd3bebf8bcab5776148c
   libretro-mgba:
     type: git
     url: https://github.com/libretro/mgba.git
