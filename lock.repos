@@ -15,6 +15,10 @@ repositories:
     type: git
     url: https://github.com/libretro/melonDS.git
     version: 634e51477364edc39aaccd3bebf8bcab5776148c
+  libretro-melondsds:
+    type: git
+    url: https://github.com/JesseTG/melonds-ds
+    version: bac0256dc6a8736c5a228f57c562257e45fd49f3
   libretro-mgba:
     type: git
     url: https://github.com/libretro/mgba.git

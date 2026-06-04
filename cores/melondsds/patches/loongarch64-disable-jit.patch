@@ -1,0 +1,13 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index b2d9ed7..a973510 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -51,7 +51,7 @@ if (IOS)
+     message(STATUS "JIT is disabled by default in iOS builds.")
+     set(DEFAULT_ENABLE_JIT OFF)
+ else()
+-    set(DEFAULT_ENABLE_JIT ON)
++    set(DEFAULT_ENABLE_JIT OFF)
+ endif ()
+ option(ENABLE_JIT "Enable JIT support. Not supported on all platforms." ${DEFAULT_ENABLE_JIT})
+ 
