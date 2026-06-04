@@ -26,9 +26,10 @@ fi
 
 echo "Downloading previous cores ..."
 CORES_LATEST_URL="https://skybird233.github.io/libretro-loong"
+ALL_CORES=$(ls cores/**/README.md | xargs -n1 yq -f=extract '.core-name')
 pushd "$CORES_TARGET_DIR"
 wget "$CORES_LATEST_URL"/"$CORES_TARGET_SUBDIR"/.index-extended -O .index-extended.old
-for core in $(yq '.repositories | keys | map(sub("libretro-","")) | join(" ")' lock.repos); do
+for core in $ALL_CORES; do
   echo "Checking $core ..."
   CORE_FILENAME="$core"_libretro.so.zip
   if [[ ! -f "$CORE_FILENAME" ]]; then

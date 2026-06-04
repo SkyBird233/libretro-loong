@@ -17,6 +17,6 @@ vcs custom libretro-super --git --args reset --hard
 vcs delete libretro-super -f < lock.repos
 ```
 
-```sh {name=fetch}
-cd libretro-super && SHALLOW_CLONE=1 ./libretro-fetch.sh $(yq '.repositories | keys | map(sub("libretro-","")) | join(" ")' ../lock.repos)
+```sh {name=fetch-all}
+cd libretro-super && SHALLOW_CLONE=1 ./libretro-fetch.sh $(ls ../cores/**/README.md | xargs -n1 yq -f=extract '.core-name')
 ```

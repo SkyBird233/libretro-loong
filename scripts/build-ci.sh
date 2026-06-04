@@ -1,6 +1,6 @@
 set -e
 
-ALL_CORES=$(yq '.repositories | keys | map(sub("libretro-","")) | join(" ")' lock.repos)
+ALL_CORES=$(ls cores/**/README.md | xargs -n1 yq -f=extract '.core-name')
 
 if [ "$#" -eq 0 ]; then
   CORES_TO_BUILD=""
