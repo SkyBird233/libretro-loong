@@ -3,6 +3,10 @@ repositories:
     type: git
     url: https://github.com/libretro/libretro-2048.git
     version: c90437d3c3913999624deca3fb55ecfa632b72c4
+  libretro-beetle_psx:
+    type: git
+    url: https://github.com/libretro/beetle-psx-libretro.git
+    version: ee042b73f8fe2aa9c8c73408b5bf200a3ce1a67b
   libretro-mame:
     type: git
     url: https://github.com/libretro/mame.git
