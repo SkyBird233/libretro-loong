@@ -5,4 +5,5 @@ docs: https://docs.libretro.com/library/yabause/
 
 # Yabause
 
-Tested games: Panzer Dragon Saga
+Tested games:
+- Panzer Dragon Saga

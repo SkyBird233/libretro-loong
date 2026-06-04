@@ -5,4 +5,5 @@ docs: https://docs.libretro.com/library/snes9x/
 
 # Snes9x
 
-Tested games: Star Fox
+Tested games:
+- Star Fox
