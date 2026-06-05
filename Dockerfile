@@ -25,6 +25,7 @@ RUN dpkg --add-architecture loong64 && \
     zlib1g-dev:loong64 \
     libegl1-mesa-dev:loong64 \
     libgles2-mesa-dev:loong64 \
+    libudev-dev:loong64 \
     python3 && \
     rm -rf /var/lib/apt/lists/*
 

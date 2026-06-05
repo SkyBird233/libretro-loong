@@ -1,3 +1,4 @@
 [submodule "libretro-super"]
 	path = libretro-super
-	url = https://github.com/libretro/libretro-super
+	url = https://github.com/SkyBird233/libretro-super.git
+	branch = fix/rules-irogb
