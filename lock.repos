@@ -31,6 +31,10 @@ repositories:
     type: git
     url: https://github.com/libretro/mgba.git
     version: 6dce57eef127dc4cc292644f38196e0e7c58590c
+  libretro-mupen64plus_next:
+    type: git
+    url: https://github.com/libretro/mupen64plus-libretro-nx.git
+    version: 98c1b0d877542b01314b3b04272282ba223b65b3
   libretro-snes9x:
     type: git
     url: https://github.com/libretro/snes9x.git

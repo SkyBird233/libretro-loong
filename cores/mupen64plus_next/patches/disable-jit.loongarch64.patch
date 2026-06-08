@@ -1,0 +1,15 @@
+diff --git a/Makefile b/Makefile
+index a817054..63c0d52 100644
+--- a/Makefile
++++ b/Makefile
+@@ -63,6 +63,10 @@ ifeq (,$(ARCH))
+    ARCH = $(shell uname -m)
+ endif
+ 
++ifeq ($(ARCH),loongarch64)
++    PLATCFLAGS += -DNO_ASM
++endif
++
+ # Target Dynarec
+ WITH_DYNAREC ?= $(ARCH)
+ 
