@@ -2,7 +2,7 @@
 <ul>
   {% for core in cores %}
   <li>
-    <a href="{{ core.url }}">{{ core.filename }}</a>
+    <a href="{{ u(core.url) }}">{{ core.filename }}</a>
     <div>
       {% for meta in core.filemeta %}
       <span>{{ meta }}</span>

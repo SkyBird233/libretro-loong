@@ -1,7 +1,42 @@
 from datetime import datetime
+from json import load
+from functools import reduce
 from math import log
 from pathlib import Path
 from zipfile import ZipFile
+
+
+class i18n:
+    locales = ["en-US", "zh-CN"]
+
+    def __init__(
+        self, locale=locales[0], locale_dir=Path(__file__).resolve().parent / "i18n"
+    ) -> None:
+        self.locale = locale
+        self.url_prefix = "" if locale == self.locales[0] else locale.lower()
+
+        with open(Path(locale_dir) / f"{self.locale}.json") as f:
+            self.data = load(f)
+
+    def _raise(self, e):
+        raise e
+
+    def t(self, key: str):
+        key_parts = key.split(".")
+        return reduce(
+            lambda x, y: x[y]
+            if isinstance(x, dict) and y in x
+            else self._raise(KeyError(f"i18n key not found: {key} ('{x}'['{y}'])")),
+            key_parts,
+            self.data,
+        )
+
+    def u(self, url: str):
+        """Convert "absolute" URLs to relative ones"""
+        url = url.lstrip("/")
+        if self.url_prefix:
+            url = f"../{url}"
+        return url
 
 
 def get_cores_meta(dist: Path, cores_url: str):
@@ -15,7 +50,7 @@ def get_cores_meta(dist: Path, cores_url: str):
 
     cores = [
         {
-            "url": f"{cores_url}/{core.name}",
+            "url": f"/{cores_url}/{core.name}",
             "filename": core.name,
             "filemeta": [
                 get_core_build_date(core).strftime("%Y-%m-%d %H:%M"),

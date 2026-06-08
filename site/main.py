@@ -8,7 +8,7 @@
 from datetime import datetime
 from jinja2 import Environment, FileSystemLoader
 from pathlib import Path
-from utils import get_cores_meta
+from utils import i18n, get_cores_meta
 
 
 src_dir = Path(__file__).resolve().parent
@@ -17,8 +17,8 @@ cores_url = "nightly/linux/loongarch64/latest"
 
 
 class Page:
-    def __init__(self, name, iconUrl, url, context=lambda: {}) -> None:
-        self.name = name
+    def __init__(self, title_key, iconUrl, url, context=lambda: {}) -> None:
+        self.title_key = title_key
         self.iconUrl = iconUrl
         self.url = url
         self.context = context
@@ -26,41 +26,57 @@ class Page:
 
 pages = [
     Page(
-        name="主页",
-        iconUrl="images/menu_room_lan.svg",
+        title_key="index.title",
+        iconUrl="/images/menu_room_lan.svg",
         url="index.html",
     ),
-    Page(name="快速开始", iconUrl="images/menu_power.svg", url="quickstart.html"),
+    Page(
+        title_key="quick-start.title",
+        iconUrl="/images/menu_power.svg",
+        url="quick-start.html",
+    ),
     # Page(
-    #     name="模拟器",
-    #     iconUrl="images/menu_saving.svg",
+    #     name="retroarch.title",
+    #     iconUrl="/images/menu_saving.svg",
     #     url="retroarch.html",
     # ),
     Page(
-        name="核心",
-        iconUrl="images/core.svg",
+        title_key="cores.title",
+        iconUrl="/images/core.svg",
         url="cores.html",
         context=lambda: {"cores": get_cores_meta(dist, cores_url)},
     ),
-    # Page(name="关于", iconUrl="images/menu_info.svg", url="about.html"),
+    # Page(name="about.title", iconUrl="/images/menu_info.svg", url="about.html"),
 ]
 
 
-def render_page(dist: Path, environment: Environment, pages: list[Page], index: int):
+def render_page(
+    path: Path,
+    environment: Environment,
+    pages: list[Page],
+    index: int,
+    i18n_locale: i18n,
+):
     page = pages[index]
     html = environment.get_template(page.url).render(
         {
-            "pageTitle": page.name,
+            "pageTitle": i18n_locale.t(page.title_key),
             "navs": pages,
             "currentNav": page.url,
             "headerText": f"Built at {datetime.now().strftime('%Y-%m-%d %H:%M')}",
             **page.context(),
         }
     )
-    with open(dist / page.url, "w") as f:
+
+    html_dist = path / i18n_locale.url_prefix
+    html_dist.mkdir(parents=True, exist_ok=True)
+    with open(html_dist / page.url, "w") as f:
         f.write(html)
 
 
-environment = Environment(loader=FileSystemLoader(src_dir / "pages"))
-for i in range(len(pages)):
-    render_page(dist, environment, pages, i)
+for locale in i18n.locales:
+    environment = Environment(loader=FileSystemLoader(src_dir / "pages"))
+    i18n_locale = i18n(locale)
+    environment.globals.update(t=i18n_locale.t, u=i18n_locale.u)
+    for i in range(len(pages)):
+        render_page(dist, environment, pages, i, i18n_locale)

@@ -4,12 +4,12 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>libretro-loong</title>
-    <link rel="stylesheet" href="main.css" />
+    <link rel="stylesheet" href="{{ u('/main.css') }}" />
   </head>
   <body>
     <header>
       <div class="title">
-        <img src="images/menu_quickmenu.svg" />
+        <img src="{{ u('/images/menu_quickmenu.svg') }}" />
         <span>{{ pageTitle }}</span>
       </div>
       <span>{{ headerText }}</span>
@@ -24,8 +24,8 @@
               href="{{ nav.url }}"
               class="{% if currentNav == nav.url %}current{% endif %}"
             >
-              <img src="{{ nav.iconUrl }}" />
-              <span>{{ nav.name }}</span>
+              <img src="{{ u(nav.iconUrl) }}" />
+              <span>{{ t(nav.title_key) }}</span>
             </a>
           </li>
           {% endfor %}
@@ -35,7 +35,7 @@
         {% block main %}
         <div class="index">
           <div class="banner">
-            <img src="images/menu_quickmenu.svg" />
+            <img src="{{ u('/images/menu_quickmenu.svg') }}" />
             <h1>libretro-loong</h1>
           </div>
           <ul class="links">
@@ -44,14 +44,16 @@
                 href="https://www.libretro.com/index.php/home-2/"
                 target="_blank"
               >
-                官方网站
+                {{ t("index.links.official-site") }}
               </a>
             </li>
             <li>
-              <a href="quickstart.html">快速开始</a>
+              <a href="quick-start.html">
+                {{ t("index.links.quick-start") }}
+              </a>
             </li>
             <li>
-              <a href="cores.html">核心下载</a>
+              <a href="cores.html">{{ t("index.links.cores") }}</a>
             </li>
           </ul>
         </div>
