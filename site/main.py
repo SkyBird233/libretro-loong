@@ -7,8 +7,8 @@
 
 from datetime import datetime
 from jinja2 import Environment, FileSystemLoader
-from math import log
 from pathlib import Path
+from utils import get_cores_meta
 
 
 src_dir = Path(__file__).resolve().parent
@@ -46,11 +46,6 @@ pages = [
 ]
 
 
-def pretty_size(size):
-    i = int(log(size, 1024))
-    return f"{size / 1024**i:.2f} {['B', 'KiB', 'MiB', 'GiB'][i]}"
-
-
 def render_page(dist: Path, environment: Environment, pages: list[Page], index: int):
     page = pages[index]
     html = environment.get_template(page.url).render(
@@ -64,22 +59,6 @@ def render_page(dist: Path, environment: Environment, pages: list[Page], index: 
     )
     with open(dist / page.url, "w") as f:
         f.write(html)
-
-
-def get_cores_meta(dist: Path, cores_url: str):
-    cores = [
-        {
-            "url": f"{cores_url}/{core.name}",
-            "filename": core.name,
-            "filemeta": [
-                datetime.fromtimestamp(core.stat().st_mtime).strftime("%Y-%m-%d %H:%M"),
-                pretty_size(core.stat().st_size),
-            ],
-        }
-        for core in (dist / cores_url).glob("*.so.zip")
-    ]
-    cores.sort(key=lambda core: core["filename"])
-    return cores
 
 
 environment = Environment(loader=FileSystemLoader(src_dir / "pages"))
