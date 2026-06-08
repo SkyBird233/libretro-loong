@@ -35,6 +35,10 @@ repositories:
     type: git
     url: https://github.com/libretro/mupen64plus-libretro-nx.git
     version: 98c1b0d877542b01314b3b04272282ba223b65b3
+  libretro-rvvm:
+    type: git
+    url: https://github.com/LekKit/RVVM.git
+    version: f937fd85c168718116a937c1fdc81e9bfb03c148
   libretro-snes9x:
     type: git
     url: https://github.com/libretro/snes9x.git
