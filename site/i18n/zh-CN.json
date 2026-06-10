@@ -21,5 +21,12 @@
   },
   "cores": {
     "title": "核心"
+  },
+  "settings": {
+    "title": "设置",
+    "language": {
+      "title": "语言",
+      "description": "设置界面的语言。"
+    }
   }
 }

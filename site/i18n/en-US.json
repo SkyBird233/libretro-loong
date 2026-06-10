@@ -21,5 +21,12 @@
   },
   "cores": {
     "title": "Cores"
+  },
+  "settings": {
+    "title": "Settings",
+    "language": {
+      "title": "Language",
+      "description": "Set the language of the user interface."
+    }
   }
 }

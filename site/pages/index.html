@@ -21,10 +21,10 @@
           {% for nav in navs %}
           <li>
             <a
-              href="{{ nav.url }}"
-              class="{% if currentNav == nav.url %}current{% endif %}"
+              href="{{ u(nav.url) }}"
+              class="{% if current_nav == nav.url %}current{% endif %}"
             >
-              <img src="{{ u(nav.iconUrl) }}" />
+              <img src="{{ u(nav.icon_url) }}" />
               <span>{{ t(nav.title_key) }}</span>
             </a>
           </li>
@@ -48,12 +48,12 @@
               </a>
             </li>
             <li>
-              <a href="quick-start.html">
+              <a href="{{ u('/quick-start.html') }}">
                 {{ t("index.links.quick-start") }}
               </a>
             </li>
             <li>
-              <a href="cores.html">{{ t("index.links.cores") }}</a>
+              <a href="{{ u('/cores.html') }}">{{ t("index.links.cores") }}</a>
             </li>
           </ul>
         </div>

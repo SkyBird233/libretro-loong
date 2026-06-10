@@ -1,0 +1,12 @@
+{% extends "index.html" %} {% block main %}
+<ul>
+  <li>
+    <a href="{{ u('settings/language.html') }}">
+      {{ t("settings.language.title") }}
+    </a>
+    <div>
+      <span>{{ t("settings.language.description") }}</span>
+    </div>
+  </li>
+</ul>
+{% endblock %}

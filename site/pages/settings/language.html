@@ -1,0 +1,11 @@
+{% extends "index.html" %} {% block main %}
+<ul>
+  {% for language in languages %}
+  <li>
+    <a href="{{ u('../settings.html', dst_locale=language.locale) }}">
+      {{ language.name }}
+    </a>
+  </li>
+  {% endfor %}
+</ul>
+{% endblock %}

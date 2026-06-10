@@ -2,6 +2,7 @@ from datetime import datetime
 from json import load
 from functools import reduce
 from math import log
+from posixpath import relpath
 from pathlib import Path
 from zipfile import ZipFile
 
@@ -13,13 +14,16 @@ class i18n:
         self, locale=locales[0], locale_dir=Path(__file__).resolve().parent / "i18n"
     ) -> None:
         self.locale = locale
-        self.url_prefix = "" if locale == self.locales[0] else locale.lower()
+        self.url_prefix = self.get_url_prefix(locale)
 
         with open(Path(locale_dir) / f"{self.locale}.json") as f:
             self.data = load(f)
 
     def _raise(self, e):
         raise e
+
+    def get_url_prefix(self, locale):
+        return "" if locale == i18n.locales[0] else locale.lower()
 
     def t(self, key: str):
         key_parts = key.split(".")
@@ -31,12 +35,31 @@ class i18n:
             self.data,
         )
 
-    def u(self, url: str):
+    def u(self, dst: str | Path, dst_locale: str = "", src: str | Path = "/") -> str:
         """Convert "absolute" URLs to relative ones"""
-        url = url.lstrip("/")
-        if self.url_prefix:
-            url = f"../{url}"
-        return url
+        assets = ["images", "nightly", "main.css"]
+
+        # dst: relative or absolute (file)
+        # src: absolute (file)
+        src, dst = Path(src), Path(dst)
+        if not src.is_absolute():
+            raise ValueError("src must be an absolute path")
+        if not dst.is_absolute():
+            dst = src.parent / dst
+
+        # Convert to locale-aware paths
+        dst_prefix = Path(
+            self.get_url_prefix(dst_locale) if dst_locale else self.url_prefix
+        )
+        src = Path(self.url_prefix) / src.relative_to(src.anchor)
+        dst = (
+            dst_prefix / dst.relative_to(dst.anchor)
+            if len(dst.parts) > 1 and dst.parts[1] not in assets
+            else dst.relative_to(dst.anchor)
+        )
+
+        # Calculate the final relative path
+        return relpath(dst, src.parent)
 
 
 def get_cores_meta(dist: Path, cores_url: str):
