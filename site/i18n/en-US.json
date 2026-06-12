@@ -15,8 +15,12 @@
       "p2": "You can also change <code>core_updater_buildbot_cores_url</code> in <code>$HOME/.config/retroarch/retroarch.cfg</code> directly."
     },
     "download-cores": {
-      "title": "单独下载安装核心",
-      "p1": "前往<a href=\"cores.html\">核心页面</a>下载所需核心，并通过“菜单 -> 加载核心 -> 安装或还原核心”安装"
+      "title": "Download and Install Cores Separately",
+      "p1": {
+        "1": "Go to the ",
+        "2": "Cores page",
+        "3": " to download the core you need, and install it via \"Main Menu -> Load Core -> Install or Restore a Core\""
+      }
     }
   },
   "cores": {
