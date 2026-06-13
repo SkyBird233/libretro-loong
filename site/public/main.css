@@ -170,6 +170,7 @@ a:hover {
   outline-width: 2px;
   outline-offset: -1px;
   border-radius: 1px;
+  background-color: #212227;
 
   animation-duration: 0.5s;
   animation-name: selected-flash;
