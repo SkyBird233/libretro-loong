@@ -14,7 +14,7 @@ repositories:
   libretro-fceumm:
     type: git
     url: https://github.com/libretro/libretro-fceumm.git
-    version: 3a84a6fd0ba20dd4877c06b1d58741172148395f
+    version: b5e3566515c27dc66c9c20572171673126532e06
   libretro-mame:
     type: git
     url: https://github.com/libretro/mame.git
