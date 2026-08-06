@@ -6,7 +6,7 @@ repositories:
   libretro-beetle_psx:
     type: git
     url: https://github.com/libretro/beetle-psx-libretro.git
-    version: ee042b73f8fe2aa9c8c73408b5bf200a3ce1a67b
+    version: 4e55b2d285011dc5142694ad50d4d7ca023269e0
   libretro-dolphin:
     type: git
     url: https://github.com/libretro/dolphin.git
