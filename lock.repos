@@ -11,6 +11,10 @@ repositories:
     type: git
     url: https://github.com/libretro/dolphin.git
     version: 0cd3bb89c29535db9b7552fc86871867ccf5b471
+  libretro-fbneo:
+    type: git
+    url: https://github.com/libretro/FBNeo.git
+    version: 0332bb983c8f8a3e9b61cb79ade30f97a5032535
   libretro-fceumm:
     type: git
     url: https://github.com/libretro/libretro-fceumm.git
