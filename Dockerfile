@@ -36,7 +36,8 @@ RUN mv /usr/local/bin/sccache-*/sccache /usr/local/bin/sccache && \
     chmod +x /usr/local/bin/sccache
 ENV SCCACHE_DIR=/tmp/sccache
 
-RUN << EOF cat > /usr/loongarch64-linux-gnu/cmake-toolchain.cmake
+RUN mkdir -p /opt/toolchains
+RUN << EOF cat > /opt/toolchains/loongarch64.cmake
 set(CMAKE_SYSTEM_NAME Linux)
 set(CMAKE_SYSTEM_PROCESSOR loongarch64)
 set(CMAKE_C_COMPILER loongarch64-linux-gnu-gcc)
@@ -46,3 +47,4 @@ set(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
 set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
 set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
 EOF
+ENV CMAKE_TOOLCHAIN_FILE=/opt/toolchains/loongarch64.cmake

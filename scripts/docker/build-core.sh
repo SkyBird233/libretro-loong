@@ -9,7 +9,6 @@ CORE_DIR="$(pwd)"/cores/"$1"
 
 TARGET='loongarch64-linux-gnu'
 export ARCH=loongarch64
-export CMAKE_TOOLCHAIN_FILE=/usr/loongarch64-linux-gnu/cmake-toolchain.cmake
 export PKG_CONFIG_LIBDIR=/usr/lib/loongarch64-linux-gnu/pkgconfig
 
 if [[ -f "$CORE_DIR"/defines.sh ]]; then
