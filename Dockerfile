@@ -1,10 +1,10 @@
 # syntax=docker.io/docker/dockerfile:1
 
-ARG DEBIAN_TAG=sid-20260406
+ARG DEEPIN_TAG=beige-loong64-v1.2.0
 ARG SCCACHE_VERSION=v0.15.0
 
 
-FROM debian:$DEBIAN_TAG
+FROM linuxdeepin/deepin:$DEEPIN_TAG
 
 # dpkg: error processing archive /tmp/apt-dpkg-install-AN2vKz/209-libxcb1_1.17.0-2+b2_amd64.deb (--unpack):
 #   trying to overwrite shared '/usr/share/doc/libxcb1/changelog.Debian.gz', which is different from other instances of package libxcb1:amd64
