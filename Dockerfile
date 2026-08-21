@@ -1,6 +1,6 @@
 # syntax=docker.io/docker/dockerfile:1
 
-ARG DEEPIN_TAG=beige-loong64-v1.2.0
+ARG DEEPIN_TAG=beige-amd64-v1.2.0
 ARG SCCACHE_VERSION=v0.15.0
 
 
