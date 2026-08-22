@@ -24,7 +24,7 @@ if [[ "$USECLANG" = true ]]; then
   export CXX17="clang++"
   export CFLAGS="$CFLAGS --target=$TARGET"
   export CXXFLAGS="$CXXFLAGS --target=$TARGET"
-  export LDFLAGS="$LDFALGS --target=$TARGET -fuse-ld=lld"
+  export LDFLAGS="$LDFLAGS --target=$TARGET -fuse-ld=${LINKER:-lld}"
   export AR="llvm-ar"
   export RANLIB="llvm-ranlib"
   export NM="llvm-nm"

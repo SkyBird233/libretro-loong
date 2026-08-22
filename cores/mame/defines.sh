@@ -1,1 +1,2 @@
 USECLANG=true
+LINKER=bfd
