@@ -1,0 +1,37 @@
+repositories:
+  RetroArch:
+    type: git
+    url: https://github.com/libretro/RetroArch.git
+    version: v1.22.2
+  common-overlays:
+    type: git
+    url: https://github.com/libretro/common-overlays.git
+    version: d89fb7f05d6573833f717d95ffc85657afee2b72
+  common-shaders:
+    type: git
+    url: https://github.com/libretro/common-shaders.git
+    version: 9c0d839a19651dffc9898da7673574a20fb39415
+  glsl-shaders:
+    type: git
+    url: https://github.com/libretro/glsl-shaders.git
+    version: 2b2c5ee3fd8e1a3884e20ed424fd9bfbc51cbb3d
+  libretro-core-info:
+    type: git
+    url: https://github.com/libretro/libretro-core-info.git
+    version: v1.22.2
+  libretro-database:
+    type: git
+    url: https://github.com/libretro/libretro-database.git
+    version: v1.22.1
+  retroarch-assets:
+    type: git
+    url: https://github.com/libretro/retroarch-assets.git
+    version: v1.22.0
+  retroarch-joypad-autoconfig:
+    type: git
+    url: https://github.com/libretro/retroarch-joypad-autoconfig.git
+    version: v1.22.0
+  slang-shaders:
+    type: git
+    url: https://github.com/libretro/slang-shaders.git
+    version: 80372284ea8c00ae5e25e5a6e4f9f49415f85896

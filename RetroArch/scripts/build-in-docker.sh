@@ -1,51 +1,17 @@
 export APPIMAGE_EXTRACT_AND_RUN=1
-
-VER=v1.22.2
-ASSETS_VER=v1.22.0
-DATABASE_VER=v1.22.1
-JOYPAD_AUTOCONFIG_VER=v1.22.0
 APPIMAGE_NAME=RetroArch-loongarch64
 
 SOURCESDIR=/sources
 OUTDIR=/out
 APPDIR="$OUTDIR"/AppDir
 CONFIGDIR="$OUTDIR"/"$APPIMAGE_NAME".AppImage.home/.config/retroarch
-APPIMAGEDIR=/usr/local/bin
 
 set -euo pipefail
 
-mkdir -p "$SOURCESDIR"
 mkdir -p "$OUTDIR"
 mkdir -p "$APPDIR"
 mkdir -p "$CONFIGDIR"
-mkdir -p "$APPIMAGEDIR"
 rm -rf "$OUTDIR/*"
-
-echo "::group::Fetching sources"
-pushd "$SOURCESDIR"
-git clone --depth 1 --branch=$VER --single-branch https://github.com/libretro/RetroArch.git
-git clone --depth 1 --branch=$VER --single-branch https://github.com/libretro/libretro-core-info.git
-git clone --depth 1 --branch=$ASSETS_VER --single-branch https://github.com/libretro/retroarch-assets.git
-git clone --depth 1 --branch=$DATABASE_VER --single-branch https://github.com/libretro/libretro-database.git
-git clone --depth 1 --branch=$JOYPAD_AUTOCONFIG_VER --single-branch https://github.com/libretro/retroarch-joypad-autoconfig.git
-git clone --depth 1 https://github.com/libretro/common-overlays.git
-git clone --depth 1 https://github.com/libretro/common-shaders.git
-git clone --depth 1 https://github.com/libretro/glsl-shaders.git
-git clone --depth 1 https://github.com/libretro/slang-shaders.git
-popd
-echo "::endgroup::"
-
-echo "::group::Setting up AppImage tools"
-pushd "$APPIMAGEDIR"
-for i in 'linuxdeploy' 'appimagetool'; do
-    curl -o "$i" -L "https://github.com/loong64/$i/releases/download/continuous/$i-loongarch64.AppImage"
-    chmod +x "$i"
-
-    # https://github.com/AppImage/AppImageKit/issues/828
-    dd if=/dev/zero bs=1 count=3 seek=8 conv=notrunc of="$i"
-done
-popd
-echo "::endgroup::"
 
 echo "::group::Building RetroArch"
 cd "$SOURCESDIR"/RetroArch && ./configure --disable-qt --prefix=/usr

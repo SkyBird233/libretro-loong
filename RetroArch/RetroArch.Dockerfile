@@ -37,3 +37,13 @@ RUN apt-get update && \
         gpg \
         && \
     rm -rf /var/lib/apt/lists/*
+
+
+# Note for dd: https://github.com/AppImage/AppImageKit/issues/828
+RUN cd /usr/local/bin && \
+    for i in 'linuxdeploy' 'appimagetool'; do \
+        curl -o "$i" -L "https://github.com/loong64/$i/releases/download/continuous/$i-loongarch64.AppImage" && \
+        chmod +x "$i" && \
+        dd if=/dev/zero bs=1 count=3 seek=8 conv=notrunc of="$i" \
+    ; done
+
