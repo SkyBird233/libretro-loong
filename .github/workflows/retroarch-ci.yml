@@ -20,6 +20,7 @@ jobs:
       - uses: docker/build-push-action@v7
         with:
           tags: "retroarch-loongarch"
+          context: RetroArch
           load: true
           cache-from: "type=gha,scope=retroarch-loongarch"
           cache-to: "type=gha,mode=max,scope=retroarch-loongarch"
@@ -40,5 +41,5 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v7
         with:
-          path: out/RetroArch-loongarch64.7z
+          path: RetroArch/out/RetroArch-loongarch64.7z
           archive: false
