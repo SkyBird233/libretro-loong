@@ -1,0 +1,44 @@
+name: RetroArch CI
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "RetroArch/**"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./RetroArch
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: docker/setup-qemu-action@v4
+      - uses: docker/setup-buildx-action@v4
+      - uses: docker/build-push-action@v7
+        with:
+          tags: "retroarch-loongarch"
+          load: true
+          cache-from: "type=gha,scope=retroarch-loongarch"
+          cache-to: "type=gha,mode=max,scope=retroarch-loongarch"
+
+      - name: Install Python packages
+        run: pip3 install vcs2l
+
+      - name: Fetch and build
+        run: scripts/build-ci.sh
+
+      - name: Comporess
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y p7zip-full
+          cd out
+          7z a RetroArch-loongarch64.7z *.AppImage{,.home}
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v7
+        with:
+          path: out/RetroArch-loongarch64.7z
+          archive: false
