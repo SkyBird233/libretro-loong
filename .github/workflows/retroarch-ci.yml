@@ -57,4 +57,5 @@ jobs:
       - uses: actions/download-artifact@v8
       - uses: softprops/action-gh-release@v3
         with:
-          files: "*.7z"
+          files: "**/*.7z"
+          fail_on_unmatched_files: true
