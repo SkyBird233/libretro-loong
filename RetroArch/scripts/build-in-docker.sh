@@ -11,7 +11,7 @@ set -euo pipefail
 mkdir -p "$OUTDIR"
 mkdir -p "$APPDIR"
 mkdir -p "$CONFIGDIR"
-rm -rf "$OUTDIR/*"
+rm -rf "$OUTDIR"/*
 
 echo "::group::Building RetroArch"
 cd "$SOURCESDIR"/RetroArch && ./configure --disable-qt --prefix=/usr
