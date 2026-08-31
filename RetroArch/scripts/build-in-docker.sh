@@ -2,6 +2,7 @@ export APPIMAGE_EXTRACT_AND_RUN=1
 APPIMAGE_NAME=RetroArch-loongarch64
 
 SOURCESDIR=/sources
+PATCHESDIR=/patches
 OUTDIR=/out
 APPDIR="$OUTDIR"/AppDir
 CONFIGDIR="$OUTDIR"/"$APPIMAGE_NAME".AppImage.home/.config/retroarch
@@ -12,6 +13,11 @@ mkdir -p "$OUTDIR"
 mkdir -p "$APPDIR"
 mkdir -p "$CONFIGDIR"
 rm -rf "$OUTDIR"/*
+
+echo "::group::Patching RetroArch"
+cd "$SOURCESDIR"/RetroArch
+git apply "$PATCHESDIR"/*
+echo "::endgroup::"
 
 echo "::group::Building RetroArch"
 cd "$SOURCESDIR"/RetroArch && ./configure --disable-qt --prefix=/usr

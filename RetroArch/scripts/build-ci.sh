@@ -10,6 +10,7 @@ echo 'Building in container ...'
 docker run --rm \
     -u $(id -u):$(id -g) \
     -v ./sources:/sources \
+    -v ./patches:/patches \
     -v ./out:/out \
     -v ./scripts/build-in-docker.sh:/build-in-docker.sh \
     "$CONTAINER_NAME" \
