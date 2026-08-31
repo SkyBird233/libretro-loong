@@ -34,7 +34,7 @@ jobs:
       - name: Fetch and build
         run: scripts/build-ci.sh
 
-      - name: Comporess
+      - name: Compress
         run: |
           sudo apt-get update
           sudo apt-get install -y p7zip-full
