@@ -9,17 +9,34 @@
   },
   "quick-start": {
     "title": "Quick Start",
-    "update-url": {
-      "title": "Replace core update URL in Retroarch",
-      "p1": "Change \"Settings -> Core -> Updater Settings -> Buildbot Cores URL\" to",
-      "p2": "You can also change <code>core_updater_buildbot_cores_url</code> in <code>$HOME/.config/retroarch/retroarch.cfg</code> directly."
+    "get-retroarch": {
+      "title": "Get RetroArch",
+      "p1": "You can download this project’s build of RetroArch directly:",
+      "link-text": "Download RetroArch-loongarch64.7z",
+      "p2": "Alternatively, use your package manager to install the version of RetroArch provided by your distribution."
     },
-    "download-cores": {
-      "title": "Download and Install Cores Separately",
-      "p1": {
-        "1": "Go to the ",
-        "2": "Cores page",
-        "3": " to download the core you need, and install it via \"Main Menu -> Load Core -> Install or Restore a Core\""
+    "get-cores": {
+      "title": "Get Cores",
+      "online-updater": {
+        "title": "Use the Online Updater to Download and Install a Core",
+        "update-url": {
+          "title": "Change the Core Updater URL in RetroArch",
+          "note": "You can skip this step if you are using this project's build of RetroArch",
+          "p1": "Change \"Settings -> Core -> Updater Settings -> Buildbot Cores URL\" to:",
+          "p2": "You can also change <code>core_updater_buildbot_cores_url</code> in <code>$HOME/.config/retroarch/retroarch.cfg</code> directly."
+        },
+        "download-and-install": {
+          "title": "Download and Install Cores in RetroArch",
+          "p1": "Navigate to \"Main Menu -> Load Core -> Download a Core\", select the desired core and confirm. RetroArch will download and install it automatically."
+        }
+      },
+      "download-cores": {
+        "title": "Download and Install Cores Separately",
+        "p1": {
+          "1": "Go to the ",
+          "2": "Cores page",
+          "3": " to download the core you need, and install it via \"Main Menu -> Load Core -> Install or Restore a Core\"."
+        }
       }
     }
   },

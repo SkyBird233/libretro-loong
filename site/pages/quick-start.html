@@ -1,18 +1,41 @@
 {% extends "index.html" %} {% block main %}
 <h1>{{ t("quick-start.title") }}</h1>
-<h2>{{ t("quick-start.update-url.title") }}</h2>
-<p>{{ t("quick-start.update-url.p1") }}</p>
+
+<h2>{{ t("quick-start.get-retroarch.title") }}</h2>
+<p>{{ t("quick-start.get-retroarch.p1") }}</p>
+<ul>
+  <li>
+    <a
+      href="https://github.com/SkyBird233/libretro-loong/releases/latest/download/RetroArch-loongarch64.7z"
+      >{{ t("quick-start.get-retroarch.link-text") }}</a
+    >
+  </li>
+</ul>
+<p>{{ t("quick-start.get-retroarch.p2") }}</p>
+
+<h2>{{ t("quick-start.get-cores.title") }}</h2>
+
+<h3>{{ t("quick-start.get-cores.online-updater.title") }}</h3>
+<h4>{{ t("quick-start.get-cores.online-updater.update-url.title") }}</h4>
+<p><i>{{ t("quick-start.get-cores.online-updater.update-url.note") }}</i></p>
+<p>{{ t("quick-start.get-cores.online-updater.update-url.p1") }}</p>
 <p>
   <code
     >https://skybird233.github.io/libretro-loong/nightly/linux/loongarch64/latest/</code
   >
 </p>
-<p>{{ t("quick-start.update-url.p2") }}</p>
+<p>{{ t("quick-start.get-cores.online-updater.update-url.p2") }}</p>
+<h4>
+  {{ t("quick-start.get-cores.online-updater.download-and-install.title") }}
+</h4>
+<p>{{ t("quick-start.get-cores.online-updater.download-and-install.p1") }}</p>
 
-<h2>{{ t("quick-start.download-cores.title") }}</h2>
+<h3>{{ t("quick-start.get-cores.download-cores.title") }}</h3>
 <p>
-  {{ t("quick-start.download-cores.p1.1") }}<a href="{{ u('cores.html') }}"
-    >{{ t("quick-start.download-cores.p1.2") }}</a
-  >{{ t("quick-start.download-cores.p1.3") }}
+  {{ t("quick-start.get-cores.download-cores.p1.1") }}<u
+    ><a href="{{ u('cores.html') }}"
+      >{{ t("quick-start.get-cores.download-cores.p1.2") }}</a
+    ></u
+  >{{ t("quick-start.get-cores.download-cores.p1.3") }}
 </p>
 {% endblock %}

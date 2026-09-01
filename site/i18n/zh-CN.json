@@ -9,17 +9,34 @@
   },
   "quick-start": {
     "title": "快速开始",
-    "update-url": {
-      "title": "在 RetroArch 中替换核心更新 URL",
-      "p1": "将“设置 -> 核心 -> 更新设置 -> 构建机器人核心 URL”项改为",
-      "p2": "您也可以直接修改 <code>$HOME/.config/retroarch/retroarch.cfg</code> 中的 <code>core_updater_buildbot_cores_url</code> 项"
+    "get-retroarch": {
+      "title": "获取 RetroArch",
+      "p1": "您可以直接下载本项目构建的 RetroArch AppImage:",
+      "link-text": "下载 RetroArch-loongarch64.7z",
+      "p2": "或通过包管理器安装您使用的发行版提供的 RetroArch 版本。"
     },
-    "download-cores": {
-      "title": "单独下载安装核心",
-      "p1": {
-        "1": "前往",
-        "2": "核心页面",
-        "3": "下载所需核心，并通过“菜单 -> 加载核心 -> 安装或还原核心”安装"
+    "get-cores": {
+      "title": "获取核心",
+      "online-updater": {
+        "title": "使用在线更新工具下载并安装核心",
+        "update-url": {
+          "title": "在 RetroArch 中替换核心更新 URL",
+          "note": "如果您使用本项目构建的 RetroArch，可跳过这一步。",
+          "p1": "将“设置 -> 核心 -> 更新设置 -> 构建机器人核心 URL”项改为：",
+          "p2": "您也可以直接修改 <code>$HOME/.config/retroarch/retroarch.cfg</code> 中的 <code>core_updater_buildbot_cores_url</code> 项。"
+        },
+        "download-and-install": {
+          "title": "在 RetroArch 中下载并安装核心",
+          "p1":"进入“菜单 -> 加载核心 -> 下载核心”页面，选择所需核心并确认。RetroArch 会自动完成核心的下载与安装。"
+        }
+      },
+      "download-cores": {
+        "title": "单独下载安装核心",
+        "p1": {
+          "1": "前往",
+          "2": "核心页面",
+          "3": "下载所需核心，并通过“菜单 -> 加载核心 -> 安装或还原核心”安装。"
+        }
       }
     }
   },
