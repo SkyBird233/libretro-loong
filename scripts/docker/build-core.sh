@@ -6,6 +6,7 @@ echo "===== $1"
 
 BASE_DIR="$(pwd)"/libretro-super
 CORE_DIR="$(pwd)"/cores/"$1"
+CORE_SOURCE_DIR="$BASE_DIR"/$(yq -f=extract '.core-source-dir // "libretro-" + .core-name' $CORE_DIR/README.md)
 
 TARGET='loongarch64-linux-gnu'
 export ARCH=loongarch64
@@ -53,7 +54,7 @@ fi
 
 if [[ -d "$CORE_DIR"/patches ]]; then
   echo "=== Patching $1 ..."
-  pushd $BASE_DIR/libretro-"$1"
+  pushd "$CORE_SOURCE_DIR"
   git apply -v "$CORE_DIR"/patches/*
   popd
 fi

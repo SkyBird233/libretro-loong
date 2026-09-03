@@ -26,7 +26,9 @@ RUN dpkg --add-architecture loong64 && \
     libegl1-mesa-dev:loong64 \
     libgles2-mesa-dev:loong64 \
     libudev-dev:loong64 \
-    python3 && \
+    python3 \
+    wget \
+    && \
     rm -rf /var/lib/apt/lists/*
 
 ARG SCCACHE_VERSION
@@ -48,3 +50,6 @@ set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
 set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
 EOF
 ENV CMAKE_TOOLCHAIN_FILE=/opt/toolchains/loongarch64.cmake
+
+RUN wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O /usr/local/bin/yq &&\
+    chmod +x /usr/local/bin/yq
