@@ -1,0 +1,17 @@
+# Fix `error: call to undeclared function '__clear_cache'` when using Clang
+# The same code exists in other files but not jit_loongarch.c
+
+diff --git a/deps/lightning/lib/jit_loongarch.c b/deps/lightning/lib/jit_loongarch.c
+index 7b49819..81ea15f 100644
+--- a/deps/lightning/lib/jit_loongarch.c
++++ b/deps/lightning/lib/jit_loongarch.c
+@@ -29,6 +29,9 @@
+  */
+ typedef struct jit_pointer_t jit_va_list_t;
+
++/* libgcc */
++extern void __clear_cache(void *, void *);
++
+ /*
+  * Prototypes
+  */
