@@ -39,6 +39,10 @@ repositories:
     type: git
     url: https://github.com/libretro/mupen64plus-libretro-nx.git
     version: 98c1b0d877542b01314b3b04272282ba223b65b3
+  libretro-ppsspp:
+    type: git
+    url: https://github.com/hrydgard/ppsspp.git
+    version: v1.20.4
   libretro-rvvm:
     type: git
     url: https://github.com/LekKit/RVVM.git
