@@ -19,6 +19,10 @@ repositories:
     type: git
     url: https://github.com/libretro/libretro-fceumm.git
     version: b5e3566515c27dc66c9c20572171673126532e06
+  libretro-genesis_plus_gx:
+    type: git
+    url: https://github.com/libretro/Genesis-Plus-GX.git
+    version: c2838c7dc4236fc2fe94e5dbd08b41486067918e
   libretro-mame:
     type: git
     url: https://github.com/libretro/mame.git
