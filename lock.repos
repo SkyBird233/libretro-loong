@@ -51,6 +51,10 @@ repositories:
     type: git
     url: https://github.com/LekKit/RVVM.git
     version: f937fd85c168718116a937c1fdc81e9bfb03c148
+  libretro-scummvm:
+    type: git
+    url: https://github.com/libretro/scummvm.git
+    version: fcbce3ae815269dacdc309092bc92ccc6d3e13bb
   libretro-snes9x:
     type: git
     url: https://github.com/libretro/snes9x.git
